@@ -1,11 +1,13 @@
 package io.hyman.domain;
 
+import javax.persistence.Entity;
+
 /**
  * Created by 10411303 on 2015/11/12.
  */
-
+@Entity
 public class Customer {
-    private long id;
+    private String id;
     private String name;
     private String phone;
 
@@ -14,7 +16,7 @@ public class Customer {
         this.phone = phone;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
