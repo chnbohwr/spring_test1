@@ -1,12 +1,15 @@
 package io.hyman.domain;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 /**
  * Created by 10411303 on 2015/11/12.
  */
 @Entity
+@Table(name = "customer")
 public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String name;
     private String phone;
