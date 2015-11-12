@@ -19,6 +19,8 @@ public class Customer {
         this.phone = phone;
     }
 
+    public Customer(){}
+
     public String getId() {
         return id;
     }

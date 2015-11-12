@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface CustomerService{
     List<Customer> listCustomer();
-    Customer addCustomer(String name,String phone);
+    Customer addCustomer(Customer customer);
     boolean deleteCustomer(long id);
     Customer updateCustomer(long id, String name , String phone);
     Customer searchCustomer(long id);
