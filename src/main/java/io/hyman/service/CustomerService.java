@@ -12,12 +12,5 @@ public interface CustomerService{
     Customer addCustomer(Customer customer);
     boolean deleteCustomer(Customer customer);
     Customer updateCustomer(Customer customer);
-
-    /**
-     * TODO
-     * 搜尋customer功能，尚未完成。
-     * @param id
-     * @return
-     */
     Customer searchCustomer(String id);
 }

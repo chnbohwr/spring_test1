@@ -49,7 +49,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer searchCustomer(String id) {
-        Customer serverCustomer = customerDao.getOne(id);
-        return serverCustomer;
+        Customer serverCustomer = customerDao.findOne(id);
+
+        if(serverCustomer != null){
+            return serverCustomer;
+        }
+        else{
+            return null;
+        }
     }
 }

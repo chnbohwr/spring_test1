@@ -4,10 +4,7 @@ import io.hyman.domain.Customer;
 import io.hyman.domain.param.CustomerAddParam;
 import io.hyman.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +22,16 @@ public class CustomerController {
     @RequestMapping(method = RequestMethod.GET)
     public List<Customer> getCustomers() {
         return customerService.listCustomer();
+    }
+
+    /**
+     * 搜尋 customer
+     * @param id
+     * @return Customer
+     * */
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public Customer searchCustomer(@RequestParam(value="id", defaultValue="1") String id){
+        return customerService.searchCustomer(id);
     }
 
     /**
