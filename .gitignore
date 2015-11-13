@@ -1,8 +1,6 @@
 .gradle/
-spring_test1.iml
-spring_test1.ipr
-spring_test1.iws
+*.iml
+*.ipr
+*.iws
 build/
-spring_learning.iml
-spring_learning.ipr
-spring_learning.iws
+
