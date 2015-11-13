@@ -10,7 +10,14 @@ import java.util.List;
 public interface CustomerService{
     List<Customer> listCustomer();
     Customer addCustomer(Customer customer);
-    boolean deleteCustomer(long id);
-    Customer updateCustomer(long id, String name , String phone);
-    Customer searchCustomer(long id);
+    boolean deleteCustomer(Customer customer);
+    Customer updateCustomer(Customer customer);
+
+    /**
+     * TODO
+     * 搜尋customer功能，尚未完成。
+     * @param id
+     * @return
+     */
+    Customer searchCustomer(String id);
 }

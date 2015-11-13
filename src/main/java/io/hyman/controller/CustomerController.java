@@ -21,23 +21,54 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    //取得所有的customer
     @RequestMapping(method = RequestMethod.GET)
     public List<Customer> getCustomers() {
-        System.out.println("Get request============================");
         return customerService.listCustomer();
     }
 
+    /**
+     * 新增customer
+     * {"name":"jack","phone":"0988999888"}
+     * @param tempCustomerObject
+     * @return Customer
+     */
     @RequestMapping(method = RequestMethod.POST)
     public Customer addCustomer(@RequestBody CustomerAddParam tempCustomerObject) {
-        System.out.println("got a reg form : " + tempCustomerObject + "===================================");
         Customer customer = new Customer(tempCustomerObject.getName(), tempCustomerObject.getPhone());
         customerService.addCustomer(customer);
         return customer;
     }
 
+    /**
+     * 修改customer
+     * {"id":"1","name":"Micjack","phone":"0988999888"}
+     * @param customer
+     * @return Customer
+     */
+    @RequestMapping(method = RequestMethod.PUT)
+    public Customer updateCustomer(@RequestBody CustomerAddParam customer) {
+        Customer temp_customer = new Customer(customer.getId(),customer.getName(),customer.getPhone());
+        Customer serverCustomer = customerService.updateCustomer(temp_customer);
+        return serverCustomer;
+    }
+
+    /**
+     * 刪除customer
+     * {"id":"1"}
+     * @param customer
+     * @return boolean true/false
+     */
+    @RequestMapping(method = RequestMethod.DELETE)
+    public boolean deleteCustomer(@RequestBody CustomerAddParam customer){
+        Customer temp_customer = new Customer(customer.getId(),customer.getName(),customer.getPhone());
+        return customerService.deleteCustomer(temp_customer);
+    }
+
+    //測試功能,post /customer/test 不用參數可以直接新增customer
     @RequestMapping(value = "/test", method = RequestMethod.POST)
-    public Customer addTestCustomer(){
-        Customer customer = new Customer("TestUser","0987654321");
+    public Customer addTestCustomer() {
+        Customer customer = new Customer("TestUser", "0987654321");
         customerService.addCustomer(customer);
         return customer;
     }

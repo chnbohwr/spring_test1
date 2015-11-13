@@ -30,17 +30,26 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public boolean deleteCustomer(long id) {
-        return false;
+    public boolean deleteCustomer(Customer customer) {
+        customerDao.delete(customer.getId());
+        return true;
+    }
+
+    //接收到修改通知，檢查有沒有該名customer，修改完畢之後，回傳customer或是null回去
+    @Override
+    public Customer updateCustomer(Customer customer) {
+        Customer serverCustomer = customerDao.findOne(customer.getId());
+        if(serverCustomer != null){
+            customerDao.save(customer);
+            return customer;
+        }else{
+            return null;
+        }
     }
 
     @Override
-    public Customer updateCustomer(long id, String name, String phone) {
-        return null;
-    }
-
-    @Override
-    public Customer searchCustomer(long id) {
-        return null;
+    public Customer searchCustomer(String id) {
+        Customer serverCustomer = customerDao.getOne(id);
+        return serverCustomer;
     }
 }
